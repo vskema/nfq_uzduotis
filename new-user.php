@@ -1,12 +1,12 @@
 <?php
-require '../classes/Database.php';
-require '../classes/Queue.php';
-
+require 'classes/Database.php';
+require 'classes/Queue.php';
+session_start();
 $queue = new Queue();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $conn = require '../includes/db.php';
+    $conn = require 'includes/db.php';
 
 
     $queue->name = $_POST['name'];
