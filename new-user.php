@@ -1,6 +1,7 @@
 <?php
 require 'classes/Database.php';
 require 'classes/Queue.php';
+require 'includes/url.php';
 session_start();
 $queue = new Queue();
 
@@ -13,14 +14,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($queue->create($conn)) {
 
-        header('Location: ' . '/nfq');
+        redirect("/nfq/show-guest.php?id={$queue->id}");
 
         exit();
     }
 }
 ?>
-
-
+<?php require 'includes/auth.php'; ?>
+<?php require 'includes/header.php';?>
 
 <h2>New registration</h2>
 
